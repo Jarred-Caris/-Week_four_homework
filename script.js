@@ -1,38 +1,52 @@
-var start = document.getElementById("start-btn");
-var questionElement = document.getElementById("question");
-var answerElement = document.getElementById("answers");
-var questionText = document.getElementById("question");
-var answerBtn = document.getElementById("answer-buttons");
+const start = document.getElementById("start-btn");
+const questionElement = document.getElementById("questionSpot");
+const answerElement = document.getElementById("answers");
+const questionText = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
 
-let shuffleQuestions, currentQuestion;
+let shuffleQuestions, currentQuestions;
 
 start.addEventListener("click", startQuiz);
 
 function startQuiz() {
   start.classList.add("hide");
   shuffleQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestion = 0;
+  currentQuestions = 0;
   questionElement.classList.remove("hide");
   answerElement.classList.remove("hide");
-  nextQuestion();
-  console.log("Initiate first question");
-}
-
-function nextQuestion() {
+  console.log("gameStart");
   nextQuestion();
 }
 
 function nextQuestion() {
-  showQuestion(shuffleQuestions[currentQuestion]);
+  resetState();
+  showQuestion(shuffleQuestions[currentQuestions]);
+  console.log("nextQuestion");
 }
 
-function showQuestion(questions) {
-  questionText.innertext = questions.question;
+function showQuestion(question) {
+  questionElement.innerText = question.question;
+  question.answerBtn.forEach((answerBtn) => {
+    const button = document.createElement("button");
+    button.innerText = answerBtn.text;
+    button.classList.add("btn");
+    if (answerBtn.correct) {
+      button.dataset.correct = answerBtn.correct;
+    }
+    button.addEventListener("click", answerSelect);
+    answerElement.appendChild(button);
+  });
+}
+
+function resetState() {
+  while (answerElement.firstChild) {
+    answerElement.removeChild(answerElement.firstChild);
+  }
 }
 
 function answerSelect() {}
 
-var questions = [
+const questions = [
   {
     question: "What does DC stand for?",
     answerBtn: [
