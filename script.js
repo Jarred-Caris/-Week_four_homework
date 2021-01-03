@@ -1,4 +1,6 @@
 const start = document.getElementById("start-btn");
+const score = document.getElementById("score");
+const timer = document.getElementById("timer");
 const questionElement = document.getElementById("questionSpot");
 const answerElement = document.getElementById("answers");
 const questionText = document.getElementById("question");
@@ -14,6 +16,8 @@ function startQuiz() {
   currentQuestions = 0;
   questionElement.classList.remove("hide");
   answerElement.classList.remove("hide");
+  score.classList.remove("hide");
+  timer.classList.remove("hide");
   console.log("gameStart");
   nextQuestion();
 }

@@ -73,3 +73,10 @@ body {
 .hide {
   display: none;
 }
+
+#timer,
+#score {
+  margin: 10px;
+  padding-bottom: 10px;
+  align-items: flex-end;
+}
