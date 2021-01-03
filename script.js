@@ -1,11 +1,14 @@
+alert(
+  "Welcome to the superhero quiz. You have 60 seconds to answer 6 questions about the superhero genre. For every correct answer, you will gain 100 points. For every incorrect answer, you will lose 10 seconds off the timer count. The game ends when all questions are answered or the timer reaches 0. Enter name for high score leaderboard.  "
+);
+
 const start = document.getElementById("start-btn");
 const score = document.getElementById("score");
-const timer = document.getElementById("timer");
+
 const questionElement = document.getElementById("questionSpot");
 const answerElement = document.getElementById("answers");
 const questionText = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
-
 let shuffleQuestions, currentQuestions;
 
 start.addEventListener("click", startQuiz);
@@ -17,9 +20,25 @@ function startQuiz() {
   questionElement.classList.remove("hide");
   answerElement.classList.remove("hide");
   score.classList.remove("hide");
-  timer.classList.remove("hide");
+  timerElement.classList.remove("hide");
   console.log("gameStart");
   nextQuestion();
+  countdown();
+}
+
+var startingMinutes = 1;
+var time = startingMinutes * 60;
+var timerElement = document.getElementById("timer");
+
+setInterval(countdown, 1000);
+
+function countdown() {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+
+  timerElement.innerHtml = `${minutes} : ${seconds}`;
+  time--;
+  console.log("countdown timer");
 }
 
 function nextQuestion() {
