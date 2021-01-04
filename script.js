@@ -36,9 +36,12 @@ function countdown() {
   var minutes = Math.floor(time / 60);
   var seconds = time % 60;
 
-  timerElement.innerHtml = `${minutes} : ${seconds}`;
+  timerElement.innerText = `${minutes} : ${seconds}`;
   time--;
   console.log("countdown timer");
+  if (time <= 0) {
+    clearInterval((time = 0));
+  }
 }
 
 function nextQuestion() {
