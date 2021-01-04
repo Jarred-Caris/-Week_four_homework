@@ -11,6 +11,8 @@ const questionText = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 let shuffleQuestions, currentQuestions;
 
+var timer;
+
 start.addEventListener("click", startQuiz);
 
 function startQuiz() {
@@ -23,14 +25,16 @@ function startQuiz() {
   timerElement.classList.remove("hide");
   console.log("gameStart");
   nextQuestion();
-  countdown();
+  startTimer();
 }
 
 var startingMinutes = 1;
 var time = startingMinutes * 60;
 var timerElement = document.getElementById("timer");
 
-setInterval(countdown, 1000);
+function startTimer() {
+  timer = setInterval(countdown, 1000);
+}
 
 function countdown() {
   var minutes = Math.floor(time / 60);
@@ -40,7 +44,7 @@ function countdown() {
   time--;
   console.log("countdown timer");
   if (time <= 0) {
-    clearInterval((time = 0));
+    clearInterval(timer);
   }
 }
 
