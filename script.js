@@ -74,7 +74,26 @@ function resetState() {
   }
 }
 
-function answerSelect() {}
+function answerSelect(event) {
+  console.log(event.currentTarget);
+  console.log(event.currentTarget.dataset.correct);
+  if ((answerbtn = answerElement.correct)) {
+    alert("correct");
+    score = "#score" + 100;
+    nextQuestion;
+    console.log(correct);
+  } else {
+    countdown = timer - 10;
+    alert("Wrong");
+    nextQuestion;
+  }
+}
+
+//Element.classList.add("wrong")
+// Element.addEventListener('click', () => {
+// clearInterval(timer)
+//  timerElement.innerhtml = -10
+// timer = setinterval(time, 1000)
 
 const questions = [
   {
