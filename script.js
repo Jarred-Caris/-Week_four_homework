@@ -1,10 +1,12 @@
+// alert messagge when page opens explaining the game
 alert(
   "Welcome to the superhero quiz. You have 60 seconds to answer 6 questions about the superhero genre. For every correct answer, you will gain 100 points. For every incorrect answer, you will lose 10 seconds off the timer count. The game ends when all questions are answered or the timer reaches 0. Enter name for high score leaderboard.  "
 );
 
+// list of start variables
 const start = document.getElementById("start-btn");
 const score = document.getElementById("score");
-
+var scoreAmount = 0;
 const questionElement = document.getElementById("questionSpot");
 const answerElement = document.getElementById("answers");
 const questionText = document.getElementById("question");
@@ -13,8 +15,10 @@ let shuffleQuestions, currentQuestions;
 
 var timer;
 
+// start button click event
 start.addEventListener("click", startQuiz);
 
+// first question page and start of game after start quiz is pushed
 function startQuiz() {
   start.classList.add("hide");
   shuffleQuestions = questions.sort(() => Math.random() - 0.5);
@@ -27,15 +31,16 @@ function startQuiz() {
   nextQuestion();
   startTimer();
 }
-
+// timer variables
 var startingMinutes = 1;
 var time = startingMinutes * 60;
 var timerElement = document.getElementById("timer");
 
+// start timer function
 function startTimer() {
   timer = setInterval(countdown, 1000);
 }
-
+// couuntdown function
 function countdown() {
   var minutes = Math.floor(time / 60);
   var seconds = time % 60;
@@ -47,13 +52,13 @@ function countdown() {
     clearInterval(timer);
   }
 }
-
+// display next question
 function nextQuestion() {
   resetState();
   showQuestion(shuffleQuestions[currentQuestions]);
   console.log("nextQuestion");
 }
-
+// showing questions and answers on page
 function showQuestion(question) {
   questionElement.innerText = question.question;
   question.answerBtn.forEach((answerBtn) => {
@@ -77,16 +82,15 @@ function resetState() {
 function answerSelect(event) {
   console.log(event.currentTarget);
   console.log(event.currentTarget.dataset.correct);
-  if ((answerbtn = answerElement.correct)) {
+  if (event.currentTarget.dataset.correct) {
     alert("correct");
-    score = "#score" + 100;
-    nextQuestion;
-    console.log(correct);
+    scoreAmount = "score " + 100;
   } else {
     countdown = timer - 10;
     alert("Wrong");
-    nextQuestion;
   }
+  currentQuestions++;
+  nextQuestion();
 }
 
 //Element.classList.add("wrong")
