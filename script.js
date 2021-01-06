@@ -6,6 +6,10 @@ alert(
 // list of start variables
 const start = document.getElementById("start-btn");
 const score = document.getElementById("score");
+const scoreButton = document.getElementById("score-btn");
+const saveElement = document.getElementById("enterScore");
+const playElement = document.getElementById("play-btn");
+const usernameElement = document.getElementById("username");
 var scoreAmount = 0;
 const questionElement = document.getElementById("questionSpot");
 const answerElement = document.getElementById("answers");
@@ -49,13 +53,22 @@ function countdown() {
   time--;
   console.log("countdown timer");
   if (time <= 0) {
+    alert("Your time has ran out, please try again");
     clearInterval(timer);
+    location.reload();
+    return false;
   }
 }
 // display next question
 function nextQuestion() {
   if (currentQuestions >= questions.length) {
     console.log("no more questions");
+    clearInterval(timer);
+    questionElement.classList.add("hide");
+    answerElement.classList.add("hide");
+    timerElement.classList.add("hide");
+    scoreButton.classList.remove("hide");
+
     return;
   }
   resetState();
@@ -98,11 +111,16 @@ function answerSelect(event) {
   nextQuestion();
 }
 
-//Element.classList.add("wrong")
-// Element.addEventListener('click', () => {
-// clearInterval(timer)
-//  timerElement.innerhtml = -10
-// timer = setinterval(time, 1000)
+scoreButton.addEventListener("click", enterscore);
+
+function enterscore() {
+  saveElement.classList.remove("hide");
+  scoreButton.classList.add("hide");
+}
+
+usernameElement.addEventListener("keyup", () => {
+  console.log("username");
+});
 
 const questions = [
   {

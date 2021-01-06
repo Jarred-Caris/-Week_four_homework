@@ -9,7 +9,9 @@
   </head>
   <body>
     <div class="container">
-        <div id="score" class= "hide"><h2>Score:</h2></div>
+        <div id="score" class= "hide"><h2>Score:</h2>
+          
+        </div>
       <div id="question-container">
       <div id="questionSpot" class="hide">Question</div>   
       <div id= "answers" class="answer-buttons hide">
@@ -20,7 +22,17 @@
       </div>
       <div class="control-buttons">
         <button id="start-btn" class="start-btn btn">Start Quiz</button>
-        <button id="score-btn" class="score-btn btn hide ">Enter High Score</button>
+        <button id="score-btn" class="score-btn btn hide">Enter High Score</button>
+      </div>
+      <div id="enterScore" class="hide"> 
+        <h1>Highscore</h1>
+        <ol id="highScoresList"></ol>
+        <form>
+          <input type="text" name="username" id="username" placeholder="username">
+          <button type="submit" class="btn" id="saveBtn" >Save</button>
+          <button type="playAgain" class="btn" id="playBtn">Play Again</button>
+          <button class="btn" id="clearBtn">Clear Highscores</button>
+        </form>
       </div>
       <p id="timer" class= "hide">1:00</p>
     </div>

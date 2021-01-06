@@ -56,7 +56,13 @@ body {
   background-color: red;
 }
 
-.start-btn,
+.start-btn {
+  font-size: x-large;
+  font-weight: bold;
+  padding: 5px;
+  margin: 10px;
+}
+
 .score-btn {
   font-size: x-large;
   font-weight: bold;
