@@ -54,6 +54,10 @@ function countdown() {
 }
 // display next question
 function nextQuestion() {
+  if (currentQuestions >= questions.length) {
+    console.log("no more questions");
+    return;
+  }
   resetState();
   showQuestion(shuffleQuestions[currentQuestions]);
   console.log("nextQuestion");
@@ -84,9 +88,10 @@ function answerSelect(event) {
   console.log(event.currentTarget.dataset.correct);
   if (event.currentTarget.dataset.correct) {
     alert("correct");
-    scoreAmount = "score " + 100;
+    scoreAmount = scoreAmount + 100;
+    score.innerHTML = " Score- " + scoreAmount;
   } else {
-    countdown = timer - 10;
+    time = time - 10;
     alert("Wrong");
   }
   currentQuestions++;
