@@ -8,7 +8,7 @@ Our fourth week project was to creat a quiz app from scratch using HTML,CSS and 
 
 ## This is the end result
 
-![Quiz App](Assets/quiz.PNG)
+![Quiz App](assets/quiz.PNG)
 
 ## Where to access code
 
