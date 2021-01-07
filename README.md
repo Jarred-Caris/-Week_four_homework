@@ -2,29 +2,33 @@
 
 Quiz App
 
-## Week three home work project
+## Week four home work project
 
-Our week 3 project was to complete a password generator. We were provided the html and css files with a small part of the javascript completed. We were to add in the rest of the javascript to allow the required features to becoming active. We needed to provide the user the ability to choose the number of characters and which characters they would like to include in that password.
+Our fourth week project was to creat a quiz app from scratch using HTML,CSS and JavaScript. We had to build everything and the quiz had certain needs that needed to be met. Multiple choice questions where a right answer would gain points where as an incorrect answer would deduct time. We needed to be able to set a timer, allow the player to submit a high score and have those scores save to local storage.
 
 ## This is the end result
 
-![Password Generator](Assets/PwGenerator.PNG)
+![Quiz App](Assets/quiz.PNG)
 
 ## Where to access code
 
-Week_three_homework git hub page. All docs are available in the Develop folder
+Week_four_homework git hub page.
 
 ## My contribution
 
-The week 3 project was a lot more of a challenge for me. javascript is a much more complex writing of code ive had little to knoww experience in so this project took me considerably longer than the previous 2 assignments.
+This weeks project was one of the hardest things ive ever had to take part in. It was complicated, used advanced features for my skill level and was very frustrating at times.
 
-Alot of external study and I have started to grasp concepts but need alot more practice. I wrote the code to prompt the user request inputs which in turn, would generate a password with their desired commands. Anything that fell outside of those perimeters would prompt an invalid request.
+In saying that, i learnt so much with this task. Im still not even close to confident in my javascript abilities but im much better than I was before the project started.
 
-As difficult as i found this, it has changed the way i looked at things and i am excited to put this to more practice in the future.
+I chose to go with superhero themed questions as it is a big part of my life. I kept a simple but bold colour scheme and button layout and tried to make it very user friendly.
+
+For this project, I did alot of external study. I read documentation and followed tutorials. I watched videos of other coders working on certain elements and i used office hours to their full extent. All this resulted into a code which for the most part works and something im particularly proud of.
 
 **explaining my page**
-My page did not allow for too much creative freedom and focused more on the programming side. I elected to use minimal functions which was challenging. I discussed this with my teachers who recommended other ways to attempt in the future and the benefits but for the sake of the project, advised this was perfectly fine.
+I am very happy with my page but it is not without its faults. I had a few stumbles along the way and this hurt the end product. Almost all criteria has been met. The only part i just could not resolve and ran out of time with was having the highScoreList display back onto the screen. I began to work this out but did not have enough time to implement these changes.
 
-I would however be interested in going back through this when i am more competent to see ways i could reduce the amount of code and still maintain the same results.
+For the most part, the page does what i wanted and most importantly, to me, it was a huge stepping stone in my skill level and taught me many valuable things.
 
-[click for page link] (https://jarred-caris.github.io/Week_three_homework/.)
+Pass or fail, I will be coming back to this to fix up its short comings, improve the code and features and have a better understanding about what i created.
+
+[click for page link] (https://jarred-caris.github.io/-Week_four_homework/.)

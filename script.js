@@ -32,7 +32,7 @@ function startQuiz() {
   answerElement.classList.remove("hide");
   score.classList.remove("hide");
   timerElement.classList.remove("hide");
-  console.log("gameStart");
+
   nextQuestion();
   startTimer();
 }
@@ -52,7 +52,7 @@ function countdown() {
 
   timerElement.innerText = `${minutes} : ${seconds}`;
   time--;
-  console.log("countdown timer");
+
   if (time <= 0) {
     alert("Your time has ran out, please try again");
     clearInterval(timer);
@@ -63,7 +63,6 @@ function countdown() {
 // display next question
 function nextQuestion() {
   if (currentQuestions >= questions.length) {
-    console.log("no more questions");
     clearInterval(timer);
     questionElement.classList.add("hide");
     answerElement.classList.add("hide");
@@ -74,7 +73,6 @@ function nextQuestion() {
   }
   resetState();
   showQuestion(shuffleQuestions[currentQuestions]);
-  console.log("nextQuestion");
 }
 // showing questions and answers on page
 function showQuestion(question) {
@@ -98,9 +96,6 @@ function resetState() {
 }
 // Answer selection and the effects on the score and timer
 function answerSelect(event) {
-  console.log(event.currentTarget);
-  console.log(event.currentTarget.dataset.correct);
-
   if (event.currentTarget.dataset.correct) {
     alert("correct");
     scoreAmount = scoreAmount + 100;
@@ -118,11 +113,15 @@ scoreButton.addEventListener("click", enterscore);
 function enterscore(e) {
   saveElement.classList.remove("hide");
   scoreButton.classList.add("hide");
+  const recentScore = localStorage.getItem("recentScore");
+  const highScore = document.getElementById("highScore");
+
+  highScore.innerText = recentScore;
+  scoreAmount.innerText = highScore;
   localStorage.setItem("recentScore", scoreAmount);
 }
 
 username.addEventListener("keyup", () => {
-  console.log(username.value);
   if (username.value) {
     saveBtn.disabled = false;
   }
@@ -142,12 +141,9 @@ function saveScore() {
   highScoreList.sort((a, b) => b.score - a.score);
   const maxHighScores = 5;
   highScoreList.splice(5);
-  localStorage.setItem("highScoresList", scoreAmount);
-}
 
-const recentScore = localStorage.getItem("recentScore");
-const highScore = document.getElementById("highScore");
-highScore.innerText = recentScore;
+  localStorage.setItem("highScoresList", JSON.stringify(highScoreList));
+}
 
 const questions = [
   {
