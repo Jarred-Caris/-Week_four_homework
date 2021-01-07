@@ -20,8 +20,6 @@ let shuffleQuestions, currentQuestions;
 
 var timer;
 
-localStorage.setItem("currentScore", score);
-
 // start button click event
 start.addEventListener("click", startQuiz);
 
@@ -98,7 +96,7 @@ function resetState() {
     answerElement.removeChild(answerElement.firstChild);
   }
 }
-
+// Answer selection and the effects on the score and timer
 function answerSelect(event) {
   console.log(event.currentTarget);
   console.log(event.currentTarget.dataset.correct);
@@ -106,7 +104,7 @@ function answerSelect(event) {
   if (event.currentTarget.dataset.correct) {
     alert("correct");
     scoreAmount = scoreAmount + 100;
-    score.innerHTML = " Score- " + scoreAmount;
+    score.innerHTML = " Score - " + scoreAmount;
   } else {
     time = time - 10;
     alert("Wrong");
@@ -114,22 +112,42 @@ function answerSelect(event) {
   currentQuestions++;
   nextQuestion();
 }
-
+// click button to enter high score screen
 scoreButton.addEventListener("click", enterscore);
 
 function enterscore(e) {
   saveElement.classList.remove("hide");
   scoreButton.classList.add("hide");
+  localStorage.setItem("recentScore", scoreAmount);
 }
 
 username.addEventListener("keyup", () => {
-  console.log("username.value");
-  saveBtn.disabled = !username.value;
+  console.log(username.value);
+  if (username.value) {
+    saveBtn.disabled = false;
+  }
 });
+//high score list
 
-saveScore = (e) => {
-  console.log("clicked the save button");
-};
+saveBtn.addEventListener("click", saveScore);
+
+function saveScore() {
+  const topPlayer = {
+    score: scoreAmount,
+    name: username.value,
+  };
+  const highScoreList =
+    JSON.parse(localStorage.getItem("highScoresList")) || [];
+  highScoreList.push(topPlayer);
+  highScoreList.sort((a, b) => b.score - a.score);
+  const maxHighScores = 5;
+  highScoreList.splice(5);
+  localStorage.setItem("highScoresList", scoreAmount);
+}
+
+const recentScore = localStorage.getItem("recentScore");
+const highScore = document.getElementById("highScore");
+highScore.innerText = recentScore;
 
 const questions = [
   {
