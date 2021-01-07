@@ -9,7 +9,8 @@ const score = document.getElementById("score");
 const scoreButton = document.getElementById("score-btn");
 const saveElement = document.getElementById("enterScore");
 const playElement = document.getElementById("play-btn");
-const usernameElement = document.getElementById("username");
+const username = document.getElementById("username");
+const saveBtn = document.getElementById("saveBtn");
 var scoreAmount = 0;
 const questionElement = document.getElementById("questionSpot");
 const answerElement = document.getElementById("answers");
@@ -18,6 +19,8 @@ const answerButtons = document.getElementById("answer-buttons");
 let shuffleQuestions, currentQuestions;
 
 var timer;
+
+localStorage.setItem("currentScore", score);
 
 // start button click event
 start.addEventListener("click", startQuiz);
@@ -99,6 +102,7 @@ function resetState() {
 function answerSelect(event) {
   console.log(event.currentTarget);
   console.log(event.currentTarget.dataset.correct);
+
   if (event.currentTarget.dataset.correct) {
     alert("correct");
     scoreAmount = scoreAmount + 100;
@@ -113,14 +117,19 @@ function answerSelect(event) {
 
 scoreButton.addEventListener("click", enterscore);
 
-function enterscore() {
+function enterscore(e) {
   saveElement.classList.remove("hide");
   scoreButton.classList.add("hide");
 }
 
-usernameElement.addEventListener("keyup", () => {
-  console.log("username");
+username.addEventListener("keyup", () => {
+  console.log("username.value");
+  saveBtn.disabled = !username.value;
 });
+
+saveScore = (e) => {
+  console.log("clicked the save button");
+};
 
 const questions = [
   {
